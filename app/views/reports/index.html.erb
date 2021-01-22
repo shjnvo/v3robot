@@ -1,0 +1,45 @@
+<h1 class="text-center">This is reportsSelect page</h1 File>
+
+<%= form_for @new_report do |f| %>
+  <label class="">Select Original File :</label>
+  <br>
+  <%= f.file_field :original %>
+  <br class="mb-3">
+  <label class="">Select Promotion File :</label>
+  <br>
+  <%= f.file_field :promotion %>
+  <br class="mb-3">
+  <label class="">Select List Items File :</label>
+  <br>
+  <%= f.file_field :list_items %>
+  <br class="mb-3">
+  <%= f.submit 'Proress', class: 'mb-5'%>
+<%end%>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Created At</td>
+      <td>Original File name</td>
+      <td>Promotion File name</td>
+      <td>List items File name</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <%@reports.each do |report|%>
+      <tr>
+        <td><%=report.id%></td>
+        <td><%=report.created_at%></td>
+        <td><%=report.original&.name%></td>
+        <td><%=report.promotion&.name%></td>
+        <td><%=report.list_items&.name%></td>
+        <td>
+          <%= link_to 'report detail', report_path(report), target: '_blank'%>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

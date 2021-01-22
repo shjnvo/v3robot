@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+weight_col = @report.perfrom
+data = @report.original_sheet.parse
+
+wb.add_worksheet(name: "sheet1") do |sheet|
+  sheet.add_row @report.original_sheet.row(1).insert(1, "Trọng Lượng")
+
+  data.each do |row|
+    sheet.add_row row.insert(1, weight_col[row[0]])
+  end
+end

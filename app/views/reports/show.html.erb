@@ -1,0 +1,38 @@
+<h1 class="text-center mb-5">This is reportsSelect page</h1 File>
+
+
+
+<%= link_to 'download bản kê', "/reports/#{@report.id}/download.xlsx", class: 'btn btn-warning mb-5'%>
+
+<% weight_col = @report.perfrom %>
+<% data = @report.original_sheet.parse %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <% @report.original_sheet.row(1).insert(1, "Trọng Lượng").each do |title| %>
+        <td><%= title%></td>
+      <%end%>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <%data.each do |row|%>
+      <tr>
+        <td><%=row[0]%></td>
+        <td><%= weight_col[row[0]]%></td>
+        <td><%=row[1]%></td>
+        <td><%=row[2]%></td>
+        <td><%=row[3]%></td>
+        <td><%=row[4]%></td>
+        <td><%=row[5]%></td>
+        <td><%=row[6]%></td>
+        <td><%=row[7]%></td>
+        <td><%=row[8]%></td>
+        <td>
+          <%= link_to 'Carton detail', carton_report_path(dh: row[0]), target: '_blank'%>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
