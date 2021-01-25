@@ -13,7 +13,7 @@ default: &default
   pool: 5
   username: ubuntu
   password: ubuntu
-  host: localhost
+  # host: localhost
   port: 5432
 development:
   <<: *default
