@@ -1,7 +1,9 @@
 class ReportsController < ApplicationController
   def index
     @new_report = Report.new
+    @new_page = Page.new
     @reports = Report.all
+    @page = Page.last
   end
 
   def show
@@ -30,6 +32,13 @@ class ReportsController < ApplicationController
     end
   end
 
+  def upload_list_items
+    @new_page = Page.new(list_items_params)
+    if @new_page.save
+      redirect_to reports_path
+    end
+  end
+
   def download
     @report = Report.find(params[:id])
     respond_to do |format|
@@ -40,6 +49,10 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:original, :promotion, :list_items)
+    params.require(:report).permit(:original, :promotion)
+  end
+
+  def list_items_params
+    params.require(:page).permit(:list_items)
   end
 end

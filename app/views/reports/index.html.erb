@@ -1,20 +1,36 @@
 <h1 class="text-center">This is reportsSelect page</h1 File>
 
-<%= form_for @new_report do |f| %>
-  <label class="">Select Original File :</label>
-  <br>
-  <%= f.file_field :original %>
-  <br class="mb-3">
-  <label class="">Select Promotion File :</label>
-  <br>
-  <%= f.file_field :promotion %>
-  <br class="mb-3">
-  <label class="">Select List Items File :</label>
-  <br>
-  <%= f.file_field :list_items %>
-  <br class="mb-3">
-  <%= f.submit 'Proress', class: 'mb-5'%>
-<%end%>
+
+<div class="form-content row">
+  <div class="form-process col">
+    <%= form_for @new_report do |f| %>
+      <label class="">Select Original File :</label>
+      <br>
+      <%= f.file_field :original %>
+      <br class="mb-3">
+      <label class="">Select Promotion File :</label>
+      <br>
+      <%= f.file_field :promotion %>
+      <br class="mb-3">
+      <%= f.submit 'Proress', class: 'mb-5'%>
+    <%end%>
+  </div>
+  <div class="form-list-items col">
+    <p>
+      <span>Current List Items : </span> <%= @page&.list_items&.name%>
+      <br>
+      <span>Upload At : </span> <%= @page&.created_at%>
+    </p>
+    <%= form_for @new_page, url: upload_list_items_reports_path do |f| %>
+      <label class="">Select List Items File :</label>
+      <br>
+      <%= f.file_field :list_items %>
+      <br class="mb-3">
+      <%= f.submit 'Upload List Items', class: 'mb-5'%>
+    <%end%>
+  </div>
+</div>
+
 
 
 <table class="table table-striped">
@@ -35,7 +51,7 @@
         <td><%=report.created_at%></td>
         <td><%=report.original&.name%></td>
         <td><%=report.promotion&.name%></td>
-        <td><%=report.list_items&.name%></td>
+        <td><%=@page&.list_items&.name%></td>
         <td>
           <%= link_to 'report detail', report_path(report), target: '_blank'%>
         </td>

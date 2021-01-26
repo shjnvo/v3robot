@@ -3,7 +3,7 @@
     <td>Nhãn Thùng / Phiếu Soạn Hàng</td>
   </tr>
   <tr>
-    <td>Tĩnh</td>
+    <td>Tỉnh</td>
     <td><%=@carton[2]%></td>
     <td></td>
   </tr>
@@ -40,13 +40,13 @@
   <tr>
     <td>Mã Hàng</td>
     <td>Vị Trí</td>
-    <td>Tên Hàng</td>
+    <td>Số Lượng</td>
   </tr>
   <%@items.each do |item|%>
   <tr>
     <td><%=item[0]%></td>
     <td><%=item[2]%></td>
-    <td><%=item[3]%></td>
+    <td><%=item[4]%></td>
   </tr>
   <%end%>
   <tr>
