@@ -1,0 +1,57 @@
+<table class="table">
+  <tr colspan="3">
+    <td>Nhãn Thùng / Phiếu Soạn Hàng</td>
+  </tr>
+  <tr>
+    <td>Tỉnh</td>
+    <td><%=@carton[2]%></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Số Đơn Hàng</td>
+    <td><%=@carton[0]%></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Trọng Lượng</td>
+    <td><%=@weight_items[@carton[0]]%></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Người Nhận 1</td>
+    <td><%=@carton[4]%></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SDT</td>
+    <td><%=@carton[6]%></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Người Nhận 2</td>
+    <td><%=@carton[8]%></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Sô Lượng Lì XÌ</td>
+    <td><%=@items.count %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Mã Hàng</td>
+    <td>Vị Trí</td>
+    <td>Tên Hàng</td>
+  </tr>
+  <%@items.each do |item|%>
+  <tr>
+    <td><%=item[0]%></td>
+    <td><%=item[2]%></td>
+    <td><%=item[3]%></td>
+  </tr>
+  <%end%>
+  <tr>
+    <td>Vendor</td>
+    <td><%=@carton[3]%></td>
+    <td></td>
+  </tr>
+</table>
