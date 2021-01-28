@@ -29,9 +29,10 @@ class Report < ApplicationRecord
 
   def perfrom
     weight_items = {}
+    list_items = list_items_sheet.parse
 
     promotion_sheet.each(dh: 'ĐƠN HÀNG', item_id: 'Item#', sll: 'Qty') do |promo_hash|
-      list_items_sheet.parse.each do |row|
+      list_items.each do |row|
         if row.include?(promo_hash[:item_id])
           item_wei = row[-1].to_f * promo_hash[:sll].to_i
           weight_items[promo_hash[:dh]] = weight_items.key?(promo_hash[:dh]) ? weight_items[promo_hash[:dh]] + item_wei : item_wei
