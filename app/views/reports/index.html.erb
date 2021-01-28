@@ -53,7 +53,8 @@
         <td><%=report.promotion&.name%></td>
         <td><%=@page&.list_items&.name%></td>
         <td>
-          <%= link_to 'report detail', report_path(report), target: '_blank'%>
+          <%= link_to 'report detail', report_path(report), target: '_blank'%>&nbsp;|&nbsp;
+          <%= link_to 'delete', report_path(report), method: :delete, data: { confirm: "Are you sure?" }%>
         </td>
       </tr>
     <%end%>

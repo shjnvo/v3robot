@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <%@report.get_items_by(data[0]).each do |item|%>
+      <%get_items_by(data[0], @data_promotion, @data_list_items).each do |item|%>
         <tr>
           <td style="text-align: center;"><%=item[0]%></td>
           <td style="text-align: center;"><%=item[4]%></td>

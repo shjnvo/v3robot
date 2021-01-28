@@ -46,9 +46,18 @@ class ReportsController < ApplicationController
     end
   end
 
+  def destroy
+    @report = Report.find(params[:id])
+    if @report.destroy
+      redirect_to reports_path
+    end
+  end
+
   def picklist
     @report = Report.find(params[:id])
     @data_original = @report.original_sheet.parse
+    @data_promotion = @report.promotion_sheet
+    @data_list_items = @report.list_items_sheet
 
     respond_to do |format|
       format.pdf do
