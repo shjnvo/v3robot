@@ -46,6 +46,17 @@ class ReportsController < ApplicationController
     end
   end
 
+  def picklist
+    @report = Report.find(params[:id])
+    @data_original = @report.original_sheet.parse
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "picklist", encoding: 'UTF-8', page_size: 'A4'
+      end
+    end
+  end
+
   private
 
   def report_params

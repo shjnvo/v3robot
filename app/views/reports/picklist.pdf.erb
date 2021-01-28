@@ -1,0 +1,35 @@
+
+<%@data_original.each do |data|%>
+  <h1 style="text-align: center;">Phiếu Soạn Hàng</h1>
+  <h3>Vendor:  <%= data[3]%></h3>
+  <h3>Số Đơn Hàng:  <%= data[0]%></h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <td width="15%">Mã Hàng</td>
+        <td width="10%">Số Lượng </td>
+        <td width="10%" >Vị Trí</td>
+        <td>Tến Hàng</td>
+      </tr>
+    </thead>
+    <tbody>
+      <%@report.get_items_by(data[0]).each do |item|%>
+        <tr>
+          <td style="text-align: center;"><%=item[0]%></td>
+          <td style="text-align: center;"><%=item[4]%></td>
+          <td style="text-align: center;"><%=item[2]%></td>
+          <td><%=item[1]%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <div class="page-break"></div>
+<%end%>
+
+<style>
+  table tr td {
+    border: 1px solid;
+  }
+  .page-break { display:block; clear:both; page-break-after:always; }
+</style>
