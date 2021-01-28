@@ -1,4 +1,5 @@
 
+<%@data_original.sort! {|a,b| a[0] <=> b[0]}%>
 <%@data_original.each do |data|%>
   <h1 style="text-align: center;">Phiếu Soạn Hàng</h1>
   <h3>Vendor:  <%= data[3]%></h3>
